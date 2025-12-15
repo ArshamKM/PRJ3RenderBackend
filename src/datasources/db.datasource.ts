@@ -12,7 +12,6 @@ export class DbDataSource extends juggler.DataSource implements LifeCycleObserve
         connector: 'postgresql',
         url: process.env.DATABASE_URL,
         ssl: { rejectUnauthorized: false },
-        // 👇 ESTA LÍNEA DESACTIVA MIGRACIONES Y EVITA EL ERROR
         migrations: false,
       },
   ) {
