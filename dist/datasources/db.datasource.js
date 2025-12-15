@@ -8,7 +8,7 @@ const config = {
     name: 'db',
     connector: 'postgresql',
     url: process.env.DATABASE_URL,
-    ssl: false
+    ssl: { rejectUnauthorized: false }
 };
 let DbDataSource = class DbDataSource extends repository_1.juggler.DataSource {
     constructor(dsConfig = config) {

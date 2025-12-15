@@ -6,7 +6,9 @@ export declare class DbDataSource extends juggler.DataSource implements LifeCycl
         name: string;
         connector: string;
         url: string | undefined;
-        ssl: boolean;
+        ssl: {
+            rejectUnauthorized: boolean;
+        };
     };
     constructor(dsConfig?: object);
 }
