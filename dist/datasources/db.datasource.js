@@ -4,20 +4,19 @@ exports.DbDataSource = void 0;
 const tslib_1 = require("tslib");
 const core_1 = require("@loopback/core");
 const repository_1 = require("@loopback/repository");
-const config = {
-    name: 'db',
-    connector: 'postgresql',
-    url: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false }
-};
 let DbDataSource = class DbDataSource extends repository_1.juggler.DataSource {
-    constructor(dsConfig = config) {
+    constructor(dsConfig = {
+        name: 'db',
+        connector: 'postgresql',
+        url: process.env.DATABASE_URL,
+        ssl: { rejectUnauthorized: false },
+        migrations: false,
+    }) {
         super(dsConfig);
     }
 };
 exports.DbDataSource = DbDataSource;
 DbDataSource.dataSourceName = 'db';
-DbDataSource.defaultConfig = config;
 exports.DbDataSource = DbDataSource = tslib_1.__decorate([
     (0, core_1.lifeCycleObserver)('datasource'),
     tslib_1.__param(0, (0, core_1.inject)('datasources.config.db', { optional: true })),
